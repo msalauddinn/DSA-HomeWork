@@ -34,17 +34,15 @@ public class CommonElementsBruteForce {
     public static ArrayList<Integer> commonElements(int[] a, int[] b){
         ArrayList<Integer> ans = new ArrayList<>();
 
-        for (int i = 0; i < a.length;){
-            for (int j = 0; j < b.length;){
-                if (a.length == b.length){
-                    if (a[i] == b[j]){
-                        ans.add(a[i]);
-                        i++;
-                        j++;
-                    }
+        int lastEle = Integer.MIN_VALUE;
+
+        for (int k : a) {
+            for (int i : b) {
+                if (k == i && lastEle != k) {
+                    lastEle = k;
+                    ans.add(k);
+                    break;
                 }
-                else if (b.length > a.length) j++;
-                else i++;
             }
         }
         return ans;
